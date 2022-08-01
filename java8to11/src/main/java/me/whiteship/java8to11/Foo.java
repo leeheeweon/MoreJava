@@ -41,5 +41,8 @@ public class Foo {
         Predicate<String> startHAnd4 = startsWithHeeweon.and(length);
         System.out.println(startHAnd4.test("Heeweon"));
         System.out.println(startHAnd4.test("Heeweon111"));
+
+        Supplier<Integer> get20 = () -> 20;
+        System.out.println(get20);
     }
 }
