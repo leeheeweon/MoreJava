@@ -1,5 +1,7 @@
 package me.whiteship.java8to11;
 
+import java.util.Optional;
+
 public class OnlineClass {
 
     private Integer id;
@@ -8,10 +10,20 @@ public class OnlineClass {
 
     private boolean closed;
 
+    private Progress process;
+
     public OnlineClass(Integer id, String title, boolean closed) {
         this.id = id;
         this.title = title;
         this.closed = closed;
+    }
+
+    public Optional<Progress> getProcess() {
+        return Optional.ofNullable(process);
+    }
+
+    public void setProcess(Progress process) {
+        this.process = process;
     }
 
     public Integer getId() {
