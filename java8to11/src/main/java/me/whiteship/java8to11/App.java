@@ -1,27 +1,27 @@
 package me.whiteship.java8to11;
 
-import java.time.Duration;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class App {
-    public static void main(String[] args) {
-        List<OnlineClass> springClasses = new ArrayList<>();
-        springClasses.add(new OnlineClass(1, "spring boot", true));
-        springClasses.add(new OnlineClass(2, "spring data jpa", true));
-        springClasses.add(new OnlineClass(3, "spring mvc", false));
-        springClasses.add(new OnlineClass(4, "spring core", false));
-        springClasses.add(new OnlineClass(5, "rest api development", false));
+    public static void main(String[] args) throws InterruptedException {
+        LocalDate now = LocalDate.now();
+        LocalDate heeweon = LocalDate.of(1994, 6, 26);
+        Period between = Period.between(now, heeweon);
+        System.out.println(between.getDays());
 
-        Optional<OnlineClass> spring = springClasses.stream().filter(oc -> oc.getTitle().startsWith("jpa")).findFirst();
-        OnlineClass onlineClass = spring.orElse();
-        System.out.println(onlineClass.getTitle());
-    }
+        Period until = now.until(heeweon);
+        System.out.println(until);
+        System.out.println(until.get(ChronoUnit.DAYS));
 
-    private static OnlineClass creatNewClass() {
-        System.out.println("creating new class");
-        return new OnlineClass(10, "New class", false);
+        LocalDateTime now1 = LocalDateTime.now();
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        System.out.println(now1.format(DateTimeFormatter.ISO_DATE));
+
+        LocalDate parse = LocalDate.parse("06/26/1994", pattern);
+        System.out.println(parse);
+
     }
 }
