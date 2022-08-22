@@ -1,18 +1,17 @@
 package me.whiteship.java8to11;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class App {
-    public static void main(String[] args) {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.submit(() -> {
-            System.out.println("Thread " + Thread.currentThread().getName());
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+            System.out.println("Hello " + Thread.currentThread().getName());
+            return "Hello";
+        }).thenApply((s)->{
+            System.out.println(Thread.currentThread().getName());
+            return s.toUpperCase();
         });
 
-        executorService.shutdown();
+        System.out.println(future.get());
     }
-
-
 }
