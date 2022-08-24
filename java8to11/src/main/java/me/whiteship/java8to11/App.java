@@ -1,20 +1,27 @@
 package me.whiteship.java8to11;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
 
 public class App {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        CompletableFuture<String> hello = CompletableFuture.supplyAsync(() -> {
-            System.out.println("Hello " + Thread.currentThread().getName());
-            return "Hello";
-        });
+        int size = 150000000;
+        int[] numbers = new int[size];
+        Random random = new Random();
 
-        CompletableFuture<String> world = CompletableFuture.supplyAsync(() -> {
-            System.out.println("World " + Thread.currentThread().getName());
-            return "World";
-        });
+        IntStream.range(0, size).forEach(i -> numbers[i] = random.nextInt());
+        long start = System.nanoTime();
+        Arrays.sort(numbers);
+        System.out.println("serial sorting took " + (System.nanoTime() - start));
 
-        CompletableFuture<Void> voidCompletableFuture = CompletableFuture.allOf(hello, world).thenAccept(System.out::println);
+        IntStream.range(0, size).forEach(i -> numbers[i] = random.nextInt());
+        start = System.nanoTime();
+        Arrays.parallelSort(numbers);
+        System.out.println("parallel sorting took " + (System.nanoTime() - start));
 
     }
+
 }
