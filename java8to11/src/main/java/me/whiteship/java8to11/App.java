@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 public class App {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+
         int size = 150000000;
         int[] numbers = new int[size];
         Random random = new Random();
