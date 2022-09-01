@@ -6,21 +6,17 @@ import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 public class App {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        int size = 150000000;
-        int[] numbers = new int[size];
-        Random random = new Random();
+    static String myName;
 
-        IntStream.range(0, size).forEach(i -> numbers[i] = random.nextInt());
-        long start = System.nanoTime();
-        Arrays.sort(numbers);
-        System.out.println("serial sorting took " + (System.nanoTime() - start));
+    static {
+        myName = "heeweon";
+    }
 
-        IntStream.range(0, size).forEach(i -> numbers[i] = random.nextInt());
-        start = System.nanoTime();
-        Arrays.parallelSort(numbers);
-        System.out.println("parallel sorting took " + (System.nanoTime() - start));
+    private String foo="bar";
+
+
+    public static void main(String[] args) {
 
     }
 
