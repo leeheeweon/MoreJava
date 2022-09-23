@@ -7,11 +7,8 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException, NoSuchFieldException {
         Class<Book> bookClass = Book.class;
-
         Book book = new Book();
-
         Class<? extends Book> aClass = book.getClass();
-
         Class<?> aClass1 = Class.forName("com.company.Book");
 
         Constructor<?> constructor = aClass1.getConstructor(null);
