@@ -27,7 +27,6 @@ public class Main {
         System.out.println(invoke);
         System.out.println(h.getName());
 
-
        /* Arrays.stream(bookClass.getDeclaredFields()).forEach(f->{
             f.setAccessible(true);
             try {
