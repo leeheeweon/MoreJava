@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ContainerServiceTest {
-
     @Test
     public void getObject_BookRepository() {
         BookRepository bookRepository = ContainerService.getObject(BookRepository.class);
